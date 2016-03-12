@@ -7,6 +7,7 @@ No arquivo "Demo.py" você pode ver um exemplo bem simples de como usar esse mó
  - Criar o objeto
  - Atribuir os métodos de tratamento dos eventos que você deseja tratar (OnHelloEvent, OnPresenceChangeEvent,     OnUserTypingEvent, OnMessageEvent, etc)
  - Iniciar o Monitor de Eventos (isso fará o Bot User ficar com status "online" no Slack)
+ - Pronto!
 
  
  O módulo possui também métodos para:

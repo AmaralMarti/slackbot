@@ -1,10 +1,10 @@
 # coding=utf-8
 
 from threading import Thread
-
 import time
 
-class slackBotEventMonitor(Thread):
+
+class SlackBotEventMonitor(Thread):
     # "Constantes" que definem os eventos a tratas
     HELLO_EVENT = 'hello'
     PRESENCE_CHANGE_EVENT = 'presence_change'
@@ -12,7 +12,7 @@ class slackBotEventMonitor(Thread):
     USER_TYPING_EVENT = 'user_typing'
     MESSAGE_EVENT = 'message'
 
-    def __init__(self, slackBot):
+    def __init__(self, slackbot):
         Thread.__init__(self)
 
         self.active = False
@@ -20,13 +20,13 @@ class slackBotEventMonitor(Thread):
         self.connected = False
 
         # obtem os objetos de controle
-        self.__bot = slackBot
-        self.__slackClient = slackBot.slackClient
+        self.__bot = slackbot
+        self.__slackClient = slackbot.slackClient
 
     def start(self):
         if not self.active:
             # Se é o "1º Start" eu dou um Start Real na Thread (estou chamando o método start() da superclasse, ou seja, o start() ancestral)
-            super(slackBotEventMonitor, self).start()
+            super(SlackBotEventMonitor, self).start()
         else:
             # Se a Thread já estiver iniciada eu só dou o "Resume"
             self.paused = False
@@ -60,27 +60,26 @@ class slackBotEventMonitor(Thread):
                 if len(events) > 0:
                     for event in events:
                         if 'type' in event.keys():
-                            type = str(event['type'])
+                            event_type = str(event['type'])
 
                             # Chama o tratamento para o event "hello"
-                            if (type == slackBotEventMonitor.HELLO_EVENT) and bool(self.__bot.OnHelloEvent.receivers):
-                                self.__bot.OnHelloEvent.send(data=event)
+                            if (event_type == SlackBotEventMonitor.HELLO_EVENT) and bool(self.__bot.OnHelloEvent.receivers):
+                                self.__bot.OnHelloEvent.send()
 
                             # Chama o tratamento para o event "presence_change"
-                            if (type == slackBotEventMonitor.PRESENCE_CHANGE_EVENT) and bool(self.__bot.OnPresenceChangeEvent.receivers):
-                                self.__bot.OnPresenceChangeEvent.send(data=event)
+                            if (event_type == SlackBotEventMonitor.PRESENCE_CHANGE_EVENT) and bool(self.__bot.OnPresenceChangeEvent.receivers):
+                                self.__bot.OnPresenceChangeEvent.send()
 
                             # Chama o tratamento para o event "reconnect_url"
-                            if (type == slackBotEventMonitor.RECONNECT_URL_EVENT) and bool(self.__bot.OnReconnectUrlEvent.receivers):
-                                self.__bot.OnReconnectUrlEvent.send(data=event)
+                            if (event_type == SlackBotEventMonitor.RECONNECT_URL_EVENT) and bool(self.__bot.OnReconnectUrlEvent.receivers):
+                                self.__bot.OnReconnectUrlEvent.send()
 
                             # Chama o tratamento para o event "user_typing"
-                            if (type == slackBotEventMonitor.USER_TYPING_EVENT) and bool(self.__bot.OnUserTypingEvent.receivers):
+                            if (event_type == SlackBotEventMonitor.USER_TYPING_EVENT) and bool(self.__bot.OnUserTypingEvent.receivers):
                                 self.__bot.OnUserTypingEvent.send(data=event)
 
                             # Chama o tratamento para o event "message"
-                            if (type == slackBotEventMonitor.MESSAGE_EVENT) and bool(self.__bot.OnMessageEvent.receivers):
+                            if (event_type == SlackBotEventMonitor.MESSAGE_EVENT) and bool(self.__bot.OnMessageEvent.receivers):
                                 self.__bot.OnMessageEvent.send(data=event)
 
                 time.sleep(0.5)
-

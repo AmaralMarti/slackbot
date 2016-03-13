@@ -27,4 +27,5 @@ Se você gostou desse módulo e quer ajudar no desenvolvimento, você pode dar u
 # Dependencias
 
 SlackClient https://github.com/slackhq/python-slackclient
+
 Blinker https://github.com/jek/blinker

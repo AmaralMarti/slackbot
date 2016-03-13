@@ -23,3 +23,8 @@ No arquivo "Demo.py" você pode ver um exemplo bem simples de como usar esse mó
  Esse módulo já é funcional, mas sem dúvida nenhuma falta muito para estar completo e por isso preciso da sua ajuda para corrigir erros que forem descobertos e aumentar as funcionalidades disponíveis.
 
 Se você gostou desse módulo e quer ajudar no desenvolvimento, você pode dar uma olhada no manual da API do Slack (principalmente https://api.slack.com/methods e https://api.slack.com/rtm), dar uma olhada nas Issues e começar a codificar.
+
+# Dependencias
+
+SlackClient https://github.com/slackhq/python-slackclient
+Blinker https://github.com/jek/blinker

@@ -1,4 +1,3 @@
-
 # slackbot
 Esse módulo permite criar um programa para comandar um Bot User no Slack. Para saber o que é um Bot User e como criar o seu, 
 acesse https://api.slack.com/bot-users

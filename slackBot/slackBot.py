@@ -64,7 +64,7 @@ class SlackBot:
     def channel_list(self):
         """
         Retorna uma lista com todos os canais publicos do time.
-        Cada item da lista e um dicionario com os detalhes de cada canal publico.
+        Cada item da lista e um dicionario com os detalhes de cada canal publico .
         (para detalhes sobre o dicionario de retorno veja https://api.slack.com/types/channel)
         """
         return self.slackClient.api_call('channels.list')['channels']

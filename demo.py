@@ -34,7 +34,7 @@ def tratar_mensagens(self, data):
         bot.slackClient.rtm_send_message(channel=channel_info['id'], message=resposta)
 
     if message == '$ListarMembros':
-        if channel_info['type'] != 'im':
+        if channel_info['type'] != 'is_im':
             bot.slackClient.rtm_send_message(channel=channel_info['id'], message='Vou providenciar os dados senhor ' + str(user_info['name']) + '...')
             members = bot.channel_members(channel_info['id'])
             if len(members) > 0:

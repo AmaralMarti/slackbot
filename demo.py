@@ -2,6 +2,7 @@
 # coding=utf-8
 
 from slackBot import SlackBot as Bot
+import time
 
 
 def tratar_hello(self):
@@ -95,22 +96,12 @@ if __name__ == "__main__":
     bot.OnUserTypingEvent.connect(tratar_digitando)
     bot.OnMessageEvent.connect(tratar_mensagens)
 
-    while True:
-        # Apresenta um menu com as opções disponíveis
-        print '1 - Start Slack Monitor'
-        print '2 - Stop Slack Monitor'
-        print '3 - Exit'
-        cmd = raw_input('>')
+    bot.eventMonitor.start()
 
-        if cmd == '1':
-            # Inicia o Monitor de Eventos do Slack
-            bot.eventMonitor.start()
-
-        if cmd == '2':
-            # Para o Monitor de Eventos do Slack
-            bot.eventMonitor.stop()
-
-        if cmd == '3':
-            print 'Execução finalizada!'
-            bot.destroy()
-            exit()
+    try:
+        while True:
+            time.sleep(0.3)
+    except:
+        print '\nExecução finalizada!'
+        bot.destroy()
+        exit()

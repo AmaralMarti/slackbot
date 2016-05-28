@@ -71,7 +71,7 @@ def get_token():
 # O programa é iniciado aqui
 if __name__ == "__main__":
 
-    token = get_token()
+    token = get_token().strip()
 
     # Cria o objeto do BOT
     try:
@@ -98,6 +98,7 @@ if __name__ == "__main__":
 
     bot.eventMonitor.start()
 
+    print 'Para encerrar pressione CTRL+C'
     try:
         while True:
             time.sleep(0.3)

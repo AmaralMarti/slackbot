@@ -32,7 +32,7 @@ SlackClient https://github.com/slackhq/python-slackclient
 Blinker https://github.com/jek/blinker
 
 # Exemplo de uilização
-<pre><code>
+```python
 #!/usr/bin/python
 # coding=utf-8
 
@@ -141,4 +141,4 @@ if __name__ == "__main__":
         print '\nExecução finalizada!'
         bot.destroy()
         exit()
- </code></pred>
+```
